@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="description" content="Capitalismous. Independent financial advisory." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #060B14; }
+    ::selection { background: rgba(158,184,206,0.35); color: #fff; }
+    @keyframes heroFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes partnerMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes orbitDash { to { stroke-dashoffset: -20; } }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.09); } }
+    @keyframes floatY { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+    @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.55); opacity: 0; } }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    @keyframes glowDrift { 0% { transform: translate(-8%, 0) scale(1); } 50% { transform: translate(8%, -6%) scale(1.15); } 100% { transform: translate(-8%, 0) scale(1); } }
+    @keyframes bounceDown { 0%, 100% { transform: translateY(0); opacity: 0.7; } 50% { transform: translateY(7px); opacity: 1; } }
+    @keyframes shineSweep { from { transform: translateX(-130%) skewX(-18deg); } to { transform: translateX(230%) skewX(-18deg); } }
+    @keyframes badgePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(158,184,206,0.25); } 50% { box-shadow: 0 0 0 7px rgba(158,184,206,0); } }
+    @keyframes glowDriftB { 0% { transform: translate(6%, 4%) scale(1.05); } 50% { transform: translate(-7%, -5%) scale(0.95); } 100% { transform: translate(6%, 4%) scale(1.05); } }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: #060B14; color: #EDF1F6; font-family: Switzer, 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased;" data-screen-label="Rebrand v3">
+
+  <div ref="{{ progressRef }}" style="position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, #9EB8CE, #F2F4F8); z-index: 60; pointer-events: none;"></div>
+
+  <!-- ================= HERO ================= -->
+  <section id="home" style="position: relative; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; isolation: isolate;" data-screen-label="Hero">
+    <img src="assets/hero-ship.png" alt="" style="position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: 72% center; transform-origin: 70% 45%; animation: kenBurns 38s ease-in-out infinite alternate;" />
+    <div style="position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(6,11,20,0.88) 0%, rgba(6,11,20,0.62) 34%, rgba(6,11,20,0.12) 62%, rgba(6,11,20,0) 100%);"></div>
+    <div style="position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0) 24%, rgba(6,11,20,0) 62%, rgba(6,11,20,0.92) 100%);"></div>
+
+    <!-- nav -->
+    <header style="width: min(100% - 56px, 1360px); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0;">
+      <a href="#home" style="display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none;">
+        <img src="assets/mark-white.png" alt="Capitalismous" style="width: 34px; height: 34px; object-fit: contain;" />
+        <span style="font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em;">Capitalismous</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 6px; padding: 6px; border-radius: 999px; border: 1px solid rgba(237,241,246,0.14); background: rgba(6,11,20,0.35); backdrop-filter: blur(14px); font-size: 0.86rem; font-weight: 500; color: rgba(237,241,246,0.72);">
+        <a href="#services" style="color: inherit; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 999px; transition: background 160ms ease, color 160ms ease;" style-hover="background: rgba(237,241,246,0.1); color: #FFFFFF;">{{ t.navServices }}</a>
+        <a href="#firm" style="color: inherit; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 999px; transition: background 160ms ease, color 160ms ease;" style-hover="background: rgba(237,241,246,0.1); color: #FFFFFF;">{{ t.navAbout }}</a>
+        <a href="#partners" style="color: inherit; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 999px; transition: background 160ms ease, color 160ms ease;" style-hover="background: rgba(237,241,246,0.1); color: #FFFFFF;">{{ t.navPartners }}</a>
+        <a href="#voices" style="color: inherit; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 999px; transition: background 160ms ease, color 160ms ease;" style-hover="background: rgba(237,241,246,0.1); color: #FFFFFF;">{{ t.navVoices }}</a>
+        <a href="#contact" style="color: inherit; text-decoration: none; white-space: nowrap; padding: 8px 16px; border-radius: 999px; transition: background 160ms ease, color 160ms ease;" style-hover="background: rgba(237,241,246,0.1); color: #FFFFFF;">{{ t.navContact }}</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <div style="display: flex; align-items: center; gap: 2px; font-size: 0.78rem; font-weight: 500;">
+          <button type="button" onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
+          <span style="color: rgba(237,241,246,0.3);">/</span>
+          <button type="button" onClick="{{ setDe }}" style="{{ deBtnStyle }}">DE</button>
+        </div>
+        <a href="mailto:mahyar@mahyarmaleki.com" style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 12px; border: 1px solid rgba(237,241,246,0.25); background: rgba(237,241,246,0.06); backdrop-filter: blur(10px); color: #FFFFFF; font-size: 0.88rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 180ms ease;" style-hover="background: rgba(237,241,246,0.14);">
+          <span>{{ t.bookCta }}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- hero copy -->
+    <div ref="{{ heroParallaxRef }}" style="flex: 1; display: flex; flex-direction: column; justify-content: center; width: min(100% - 56px, 1360px); margin: 0 auto; padding: 30px 0; will-change: transform;">
+      <div style="max-width: 620px; display: grid; gap: 28px; justify-items: start;">
+        <p style="display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(237,241,246,0.18); background: rgba(6,11,20,0.4); backdrop-filter: blur(10px); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; color: rgba(237,241,246,0.85); animation: heroFade 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both, badgePulse 3.6s ease-in-out 1.2s infinite;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9EB8CE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg>
+          <span>{{ t.badge }}</span>
+        </p>
+        <h1 style="margin: 0; font-size: clamp(3.2rem, 6.2vw, 5.6rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.035em; color: #FFFFFF; animation: heroFade 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 130ms both;">
+          <span style="display: block;">{{ t.heroLineOne }}</span>
+          <span style="display: block;">{{ t.heroLineTwo }}</span>
+        </h1>
+        <p style="margin: 0; max-width: 440px; font-size: 1.06rem; line-height: 1.65; color: rgba(237,241,246,0.78); animation: heroFade 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 260ms both;">{{ t.heroLead }}</p>
+        <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 6px; animation: heroFade 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 390ms both;">
+          <a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; padding: 11px 20px; border-radius: 12px; background: #F2F4F8; color: #0A1220; font-size: 0.88rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: transform 180ms ease;" style-hover="transform: translateY(-2px);">
+            <span>{{ t.heroCta }}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+          <a href="#services" style="display: inline-flex; align-items: center; gap: 12px; color: rgba(237,241,246,0.85); font-size: 0.92rem; font-weight: 500; text-decoration: none;">
+            <span style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(237,241,246,0.3); background: rgba(6,11,20,0.35); backdrop-filter: blur(8px);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounceDown 2.2s ease-in-out infinite;"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
+            </span>
+            <span style="display: grid; line-height: 1.35;">
+              <span>{{ t.heroSecondary }}</span>
+              <span style="font-size: 0.78rem; color: rgba(237,241,246,0.55);">{{ t.heroSecondarySub }}</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- hero bottom: partner strip -->
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; padding: 0 0 34px;">
+      <div style="display: grid; gap: 20px; padding-top: 24px; border-top: 1px solid rgba(237,241,246,0.16);">
+        <span style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(237,241,246,0.5);">{{ t.partnerStrip }}</span>
+        <div style="overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);">
+          <div style="display: flex; align-items: baseline; gap: 0; width: max-content; animation: partnerMarquee 28s linear infinite; color: rgba(237,241,246,0.72);">
+            <div style="display: flex; align-items: baseline; gap: 80px; padding-right: 80px; white-space: nowrap;">
+              <span style="font-size: 1.15rem; font-weight: 600; letter-spacing: 0.06em;">Allianz</span>
+              <span style="font-size: 1.05rem; font-weight: 500; letter-spacing: 0.01em;">Deutsche Bank</span>
+              <span style="font-size: 1.1rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Generali</span>
+              <span style="font-size: 1.05rem; font-weight: 500;">Union Investment</span>
+              <span style="font-size: 1.1rem; font-weight: 600; letter-spacing: 0.2em;">DVAG</span>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 80px; padding-right: 80px; white-space: nowrap;" aria-hidden="true">
+              <span style="font-size: 1.15rem; font-weight: 600; letter-spacing: 0.06em;">Allianz</span>
+              <span style="font-size: 1.05rem; font-weight: 500; letter-spacing: 0.01em;">Deutsche Bank</span>
+              <span style="font-size: 1.1rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Generali</span>
+              <span style="font-size: 1.05rem; font-weight: 500;">Union Investment</span>
+              <span style="font-size: 1.1rem; font-weight: 600; letter-spacing: 0.2em;">DVAG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATEMENT ================= -->
+  <section style="position: relative; padding: clamp(110px, 15vh, 180px) 0; border-bottom: 1px solid rgba(237,241,246,0.07);" data-screen-label="Statement">
+    <div style="position: absolute; left: 20%; top: 20%; width: 480px; height: 320px; border-radius: 50%; background: radial-gradient(ellipse, rgba(158,184,206,0.07), transparent 70%); animation: glowDrift 14s ease-in-out infinite; pointer-events: none;" aria-hidden="true"></div>
+    <div data-reveal="true" style="width: min(100% - 56px, 980px); margin: 0 auto; position: relative; text-align: center; display: grid; gap: 28px; justify-items: center;">
+      <p style="margin: 0; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(237,241,246,0.42);">{{ t.stmtEyebrow }}</p>
+      <h2 style="margin: 0; font-size: clamp(2rem, 4.2vw, 3.6rem); font-weight: 500; line-height: 1.22; letter-spacing: -0.03em; color: rgba(237,241,246,0.94); text-wrap: balance;">{{ t.stmtTitle }}</h2>
+      <p style="margin: 0; max-width: 60ch; font-size: 1rem; line-height: 1.8; color: rgba(237,241,246,0.6);">{{ t.stmtCopy }}</p>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services" style="padding: clamp(90px, 13vh, 150px) 0; border-bottom: 1px solid rgba(237,241,246,0.07);" data-screen-label="Services">
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; display: grid; gap: clamp(50px, 7vh, 80px);">
+      <div data-reveal="true" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+        <div style="display: grid; gap: 22px;">
+          <p style="margin: 0; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(237,241,246,0.42);">{{ t.servicesEyebrow }}</p>
+          <h2 style="margin: 0; font-size: clamp(2.3rem, 4.2vw, 3.8rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em;">{{ t.servicesTitle }}</h2>
+        </div>
+        <p style="margin: 0 0 8px; max-width: 380px; font-size: 0.94rem; line-height: 1.7; color: rgba(237,241,246,0.6);">{{ t.servicesLead }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+        <sc-for list="{{ services }}" as="svc" hint-placeholder-count="6">
+          <div data-reveal="true" style="position: relative; overflow: hidden; display: grid; align-content: start; gap: 18px; padding: 30px 28px 26px; border: 1px solid rgba(237,241,246,0.1); border-radius: 18px; background: linear-gradient(165deg, rgba(237,241,246,0.045), rgba(237,241,246,0.012)); isolation: isolate; transition: border-color 200ms ease, transform 200ms ease, box-shadow 250ms ease;" style-hover="border-color: rgba(158,184,206,0.45); transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.35);">
+            <span style="position: absolute; top: 0; left: 0; width: 55%; height: 100%; background: linear-gradient(105deg, transparent 20%, rgba(237,241,246,0.05) 50%, transparent 80%); transform: translateX(-130%) skewX(-18deg); pointer-events: none;" style-hover="animation: shineSweep 900ms ease;" aria-hidden="true"></span>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <span style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; color: rgba(158,184,206,0.8);">{{ svc.num }}</span>
+              <span style="padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(237,241,246,0.14); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; color: rgba(237,241,246,0.55);">{{ svc.brand }}</span>
+            </div>
+            <h3 style="margin: 6px 0 0; font-size: 1.28rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25;">{{ svc.title }}</h3>
+            <p style="margin: 0; font-size: 0.9rem; line-height: 1.7; color: rgba(237,241,246,0.6);">{{ svc.body }}</p>
+            <span style="margin-top: 4px; padding-top: 16px; border-top: 1px solid rgba(237,241,246,0.09); font-size: 0.8rem; line-height: 1.5; color: rgba(237,241,246,0.48);">{{ svc.detail }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FIRM ================= -->
+  <section id="firm" style="position: relative; padding: clamp(100px, 14vh, 170px) 0; border-bottom: 1px solid rgba(237,241,246,0.07); overflow: hidden;" data-screen-label="Firm">
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 24% 50%, rgba(158,184,206,0.06), transparent 70%); animation: glowDriftB 18s ease-in-out infinite; pointer-events: none;"></div>
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr); gap: clamp(48px, 7vw, 110px); align-items: center;">
+      <div data-reveal="true" style="display: grid; gap: 34px; justify-items: start;">
+        <p style="margin: 0; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(237,241,246,0.42);">{{ t.firmEyebrow }}</p>
+        <h2 style="margin: 0; font-size: clamp(1.9rem, 3.4vw, 3rem); font-weight: 500; line-height: 1.22; letter-spacing: -0.025em; color: rgba(237,241,246,0.94); text-wrap: balance;">{{ t.firmTitle }}</h2>
+        <p style="margin: 0; max-width: 58ch; font-size: 0.98rem; line-height: 1.8; color: rgba(237,241,246,0.62);">{{ t.firmCopy }}</p>
+      </div>
+      <div data-reveal="true" style="justify-self: end; width: 100%; max-width: 380px; display: grid; gap: 12px; padding: clamp(30px, 3.4vw, 44px); border: 1px solid rgba(237,241,246,0.12); border-radius: 20px; background: linear-gradient(160deg, rgba(237,241,246,0.05), rgba(237,241,246,0.015)); backdrop-filter: blur(12px);">
+        <img src="assets/mark-white.png" alt="" style="width: 44px; height: 44px; object-fit: contain; opacity: 0.9; margin-bottom: 12px;" />
+        <div style="display: grid; gap: 12px; font-size: 0.88rem; color: rgba(237,241,246,0.62);">
+          <span style="display: flex; justify-content: space-between; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(237,241,246,0.09);"><span>{{ t.firmFactOneK }}</span><span style="color: rgba(237,241,246,0.92); text-align: right;">{{ t.firmFactOneV }}</span></span>
+          <span style="display: flex; justify-content: space-between; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(237,241,246,0.09);"><span>{{ t.firmFactTwoK }}</span><span style="color: rgba(237,241,246,0.92); text-align: right;">{{ t.firmFactTwoV }}</span></span>
+          <span style="display: flex; justify-content: space-between; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(237,241,246,0.09);"><span>{{ t.firmFactThreeK }}</span><span style="color: rgba(237,241,246,0.92); text-align: right;">{{ t.firmFactThreeV }}</span></span>
+          <span style="display: flex; justify-content: space-between; gap: 14px;"><span>{{ t.firmFactFourK }}</span><span style="color: rgba(237,241,246,0.92); text-align: right;">{{ t.firmFactFourV }}</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PARTNERS ================= -->
+  <section id="partners" style="padding: clamp(90px, 13vh, 150px) 0; border-bottom: 1px solid rgba(237,241,246,0.07);" data-screen-label="Partners">
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; display: grid; gap: clamp(44px, 6vh, 70px);">
+      <div data-reveal="true" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+        <h2 style="margin: 0; font-size: clamp(2.3rem, 4.2vw, 3.8rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em;">{{ t.partnersTitle }}</h2>
+        <p style="margin: 0 0 8px; max-width: 420px; font-size: 0.94rem; line-height: 1.7; color: rgba(237,241,246,0.6);">{{ t.partnersCopy }}</p>
+      </div>
+      <!-- constellation: Capitalismous at the center, partners in orbit -->
+      <div style="position: relative; width: min(100%, 1000px); height: 540px; margin: 0 auto;">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible;" aria-hidden="true">
+          <line x1="50" y1="50" x2="50" y2="8" stroke="rgba(237,241,246,0.16)" stroke-width="0.16" stroke-dasharray="1.6 1.6" style="animation: orbitDash 3s linear infinite;"></line>
+          <line x1="50" y1="50" x2="88" y2="30" stroke="rgba(237,241,246,0.16)" stroke-width="0.16" stroke-dasharray="1.6 1.6" style="animation: orbitDash 3s linear infinite;"></line>
+          <line x1="50" y1="50" x2="76" y2="84" stroke="rgba(237,241,246,0.16)" stroke-width="0.16" stroke-dasharray="1.6 1.6" style="animation: orbitDash 3s linear infinite;"></line>
+          <line x1="50" y1="50" x2="24" y2="84" stroke="rgba(237,241,246,0.16)" stroke-width="0.16" stroke-dasharray="1.6 1.6" style="animation: orbitDash 3s linear infinite;"></line>
+          <line x1="50" y1="50" x2="12" y2="30" stroke="rgba(237,241,246,0.16)" stroke-width="0.16" stroke-dasharray="1.6 1.6" style="animation: orbitDash 3s linear infinite;"></line>
+        </svg>
+
+        <!-- center: the firm -->
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 12px;">
+          <span style="position: relative; display: grid; place-items: center;">
+            <span style="position: absolute; width: 108px; height: 108px; border-radius: 50%; border: 1px solid rgba(158,184,206,0.5); animation: pulseRing 3.2s ease-out infinite;" aria-hidden="true"></span>
+            <span style="position: absolute; width: 148px; height: 148px; border-radius: 50%; border: 1px dashed rgba(237,241,246,0.2); animation: spinSlow 40s linear infinite;" aria-hidden="true"></span>
+          <span style="display: grid; place-items: center; width: 108px; height: 108px; border-radius: 50%; border: 1px solid rgba(237,241,246,0.22); background: radial-gradient(circle at 35% 30%, rgba(237,241,246,0.1), rgba(6,11,20,0.6)); backdrop-filter: blur(8px); box-shadow: 0 0 60px rgba(158,184,206,0.15);">
+            <img src="assets/mark-white.png" alt="Capitalismous" style="width: 48px; height: 48px; object-fit: contain;" />
+          </span>
+          </span>
+          <span style="font-size: 0.8rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,241,246,0.85);">Capitalismous</span>
+          <span style="font-size: 0.7rem; color: rgba(237,241,246,0.45); margin-top: -6px;">{{ t.orbitCenterSub }}</span>
+        </div>
+
+        <!-- partner nodes -->
+        <button type="button" onClick="{{ selP0 }}" style="position: absolute; left: 50%; top: 8%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 10px; padding: 0; background: transparent; border: 0; cursor: pointer; color: inherit; font: inherit;">
+          <span style="animation: floatY 3.4s ease-in-out infinite alternate;"><span style="{{ p0Ring }}">UI</span></span>
+          <span style="font-size: 0.88rem; font-weight: 600; white-space: nowrap;">Union Investment</span>
+        </button>
+        <button type="button" onClick="{{ selP1 }}" style="position: absolute; left: 88%; top: 30%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 10px; padding: 0; background: transparent; border: 0; cursor: pointer; color: inherit; font: inherit;">
+          <span style="animation: floatY 3.9s ease-in-out 0.4s infinite alternate;"><span style="{{ p1Ring }}">DB</span></span>
+          <span style="font-size: 0.88rem; font-weight: 600; white-space: nowrap;">Deutsche Bank</span>
+        </button>
+        <button type="button" onClick="{{ selP2 }}" style="position: absolute; left: 76%; top: 84%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 10px; padding: 0; background: transparent; border: 0; cursor: pointer; color: inherit; font: inherit;">
+          <span style="animation: floatY 3.1s ease-in-out 0.8s infinite alternate;"><span style="{{ p2Ring }}">G</span></span>
+          <span style="font-size: 0.88rem; font-weight: 600; white-space: nowrap;">Generali</span>
+        </button>
+        <button type="button" onClick="{{ selP3 }}" style="position: absolute; left: 24%; top: 84%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 10px; padding: 0; background: transparent; border: 0; cursor: pointer; color: inherit; font: inherit;">
+          <span style="animation: floatY 3.7s ease-in-out 0.2s infinite alternate;"><span style="{{ p3Ring }}">A</span></span>
+          <span style="font-size: 0.88rem; font-weight: 600; white-space: nowrap;">Allianz</span>
+        </button>
+        <button type="button" onClick="{{ selP4 }}" style="position: absolute; left: 12%; top: 30%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 10px; padding: 0; background: transparent; border: 0; cursor: pointer; color: inherit; font: inherit;">
+          <span style="animation: floatY 3.5s ease-in-out 0.6s infinite alternate;"><span style="{{ p4Ring }}">DV</span></span>
+          <span style="font-size: 0.88rem; font-weight: 600; white-space: nowrap;">DVAG</span>
+        </button>
+      </div>
+
+      <!-- detail for selected partner -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; padding: 22px 28px; border: 1px solid rgba(237,241,246,0.12); border-radius: 999px; background: linear-gradient(160deg, rgba(237,241,246,0.045), rgba(237,241,246,0.012)); width: fit-content; margin: 0 auto; max-width: 100%;">
+        <strong style="font-size: 0.98rem; font-weight: 600; color: rgba(237,241,246,0.92); white-space: nowrap;">{{ selName }}</strong>
+        <span style="width: 1px; height: 18px; background: rgba(237,241,246,0.2);"></span>
+        <span style="font-size: 0.9rem; color: rgba(237,241,246,0.6);">{{ selProduct }}</span>
+      </div>
+      <p style="margin: 0 auto; font-size: 0.84rem; line-height: 1.7; color: rgba(237,241,246,0.45); max-width: 62ch; text-align: center;">{{ t.partnersNote }}</p>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section id="voices" style="padding: clamp(90px, 13vh, 150px) 0; border-bottom: 1px solid rgba(237,241,246,0.07);" data-screen-label="Testimonials">
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; display: grid; gap: clamp(44px, 6vh, 70px);">
+      <div data-reveal="true" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+        <div style="display: grid; gap: 22px;">
+          <p style="margin: 0; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(237,241,246,0.42);">{{ t.voicesEyebrow }}</p>
+          <h2 style="margin: 0; font-size: clamp(2.3rem, 4.2vw, 3.8rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.03em;">{{ t.voicesTitle }}</h2>
+        </div>
+        <p style="margin: 0 0 8px; max-width: 380px; font-size: 0.94rem; line-height: 1.7; color: rgba(237,241,246,0.6);">{{ t.voicesLead }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;">
+        <sc-for list="{{ testimonials }}" as="tm" hint-placeholder-count="3">
+          <figure data-reveal="true" style="display: grid; align-content: space-between; gap: 34px; margin: 0; padding: 32px 30px; border: 1px solid rgba(237,241,246,0.1); border-radius: 18px; background: linear-gradient(165deg, rgba(237,241,246,0.045), rgba(237,241,246,0.012)); transition: border-color 200ms ease, transform 200ms ease;" style-hover="border-color: rgba(158,184,206,0.4); transform: translateY(-4px);">
+            <blockquote style="margin: 0; font-size: 1.02rem; line-height: 1.7; letter-spacing: -0.005em; color: rgba(237,241,246,0.85);">“{{ tm.quote }}”</blockquote>
+            <figcaption style="display: flex; align-items: center; gap: 14px; padding-top: 22px; border-top: 1px solid rgba(237,241,246,0.09);">
+              <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(158,184,206,0.4); background: rgba(158,184,206,0.1); color: #9EB8CE; font-size: 0.92rem; font-weight: 600;">{{ tm.initial }}</span>
+              <span style="display: grid; gap: 2px;">
+                <strong style="font-size: 0.92rem; font-weight: 600; color: rgba(237,241,246,0.92);">{{ tm.name }}</strong>
+                <span style="font-size: 0.78rem; color: rgba(237,241,246,0.5);">{{ tm.role }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" style="position: relative; padding: clamp(100px, 14vh, 160px) 0; overflow: hidden;" data-screen-label="Contact">
+    <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% 115%, rgba(158,184,206,0.09), transparent 70%); animation: glowDrift 16s ease-in-out infinite; pointer-events: none;"></div>
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; position: relative; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(380px, 1fr); gap: clamp(44px, 6vw, 90px); align-items: center;">
+      <div style="display: grid; gap: 28px; justify-items: start;">
+        <p style="margin: 0; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(237,241,246,0.42);">{{ t.contactEyebrow }}</p>
+        <h2 style="margin: 0; font-size: clamp(2.5rem, 4.6vw, 4.2rem); font-weight: 500; line-height: 1.06; letter-spacing: -0.03em;">
+          <span style="display: block;">{{ t.contactTitleOne }}</span>
+          <span style="display: block; color: rgba(158,184,206,0.9);">{{ t.contactTitleTwo }}</span>
+        </h2>
+        <p style="margin: 0; max-width: 44ch; font-size: 0.98rem; line-height: 1.8; color: rgba(237,241,246,0.62);">{{ t.contactCopy }}</p>
+        <div style="display: grid; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(158,184,206,0.5); color: #9EB8CE;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <span style="font-size: 0.84rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(237,241,246,0.7);">{{ t.contactNote }}</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(158,184,206,0.5); color: #9EB8CE;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            </span>
+            <span style="font-size: 0.84rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(237,241,246,0.7);">{{ t.contactSupport }}</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(158,184,206,0.5); color: #9EB8CE;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            </span>
+            <a href="mailto:mahyar@mahyarmaleki.com" style="font-size: 0.92rem; color: rgba(237,241,246,0.85); text-decoration: none;" style-hover="color: #FFFFFF;">mahyar@mahyarmaleki.com</a>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(158,184,206,0.5); color: #9EB8CE;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.23a2 2 0 0 1 2.11-.45c.84.32 1.72.54 2.62.66A2 2 0 0 1 22 16.92z"></path></svg>
+            </span>
+            <a href="tel:+4917627713191" style="font-size: 0.92rem; color: rgba(237,241,246,0.85); text-decoration: none;" style-hover="color: #FFFFFF;">+49 176 27713191</a>
+          </div>
+        </div>
+      </div>
+      <div style="overflow: hidden; border-radius: 20px; border: 1px solid rgba(237,241,246,0.14); background: #081018; box-shadow: 0 40px 120px rgba(0,0,0,0.5);">
+        <iframe src="https://calendly.com/mahyarr-maleki?hide_gdpr_banner=1&background_color=081018&text_color=edf1f6&primary_color=9eb8ce&embed_type=Inline" title="Calendly booking" style="width: 100%; height: 640px; border: 0; display: block;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer style="border-top: 1px solid rgba(237,241,246,0.08);" data-screen-label="Footer">
+    <div style="width: min(100% - 56px, 1360px); margin: 0 auto; padding: 44px 0; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
+      <a href="#home" style="display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none;">
+        <img src="assets/mark-white.png" alt="" style="width: 28px; height: 28px; object-fit: contain;" />
+        <span style="font-size: 0.95rem; font-weight: 600;">Capitalismous</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 28px; font-size: 0.84rem; color: rgba(237,241,246,0.58);">
+        <a href="#services" style="color: inherit; text-decoration: none;">{{ t.navServices }}</a>
+        <a href="#firm" style="color: inherit; text-decoration: none;">{{ t.navAbout }}</a>
+        <a href="#partners" style="color: inherit; text-decoration: none;">{{ t.navPartners }}</a>
+        <a href="#voices" style="color: inherit; text-decoration: none;">{{ t.navVoices }}</a>
+        <a href="#contact" style="color: inherit; text-decoration: none;">{{ t.navContact }}</a>
+      </nav>
+      <div style="display: grid; gap: 6px; justify-items: end; font-size: 0.8rem; color: rgba(237,241,246,0.4);">
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <a href="mailto:mahyar@mahyarmaleki.com" style="color: rgba(237,241,246,0.6); text-decoration: none;">mahyar@mahyarmaleki.com</a>
+          <a href="tel:+4917627713191" style="color: rgba(237,241,246,0.6); text-decoration: none;">+49 176 27713191</a>
+        </div>
+        <span>{{ t.footerRights }}</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: localStorage.getItem("capitalismous-language") || "en", selectedPartner: 0 };
+  progressRef = React.createRef();
+  heroParallaxRef = React.createRef();
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const h = document.documentElement;
+      const el = this.progressRef.current;
+      if (el) {
+        const max = h.scrollHeight - h.clientHeight;
+        el.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+      }
+      const hero = this.heroParallaxRef.current;
+      if (hero) {
+        const y = Math.min(h.scrollTop, window.innerHeight);
+        hero.style.transform = "translateY(" + y * 0.22 + "px)";
+        hero.style.opacity = String(Math.max(0, 1 - (y / window.innerHeight) * 1.15));
+      }
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    els.forEach((el) => {
+      const sibs = el.parentElement ? Array.from(el.parentElement.children).filter((c) => c.hasAttribute && c.hasAttribute("data-reveal")) : [el];
+      const idx = Math.max(0, sibs.indexOf(el));
+      el._origTransition = el.style.transition || "";
+      el.style.opacity = "0";
+      el.style.transform = "translateY(26px)";
+      el.style.transition = "opacity 750ms ease " + (idx * 110) + "ms, transform 750ms cubic-bezier(0.2,0.7,0.2,1) " + (idx * 110) + "ms";
+      el._revealDelay = idx * 110;
+    });
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          const el = en.target;
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+          this._io.unobserve(el);
+          setTimeout(() => { el.style.transition = el._origTransition; }, (el._revealDelay || 0) + 800);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    els.forEach((el) => this._io.observe(el));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+
+  dict() {
+    return {
+      en: {
+        navServices: "Services", navAbout: "About", navPartners: "Partners", navContact: "Contact",
+        bookCta: "Let's Talk",
+        badge: "Independent Financial Advisory",
+        heroLineOne: "We invest in",
+        heroLineTwo: "what matters.",
+        heroLead: "Strategic investments. Disciplined approach. Enduring value. Advisory for private clients and businesses, in German and English.",
+        heroCta: "Book a Free Consultation",
+        heroSecondary: "Explore the services",
+        heroSecondarySub: "First session free, no obligation",
+        partnerStrip: "Working with established institutions",
+        stmtEyebrow: "The Approach",
+        stmtTitle: "Calm decisions, made once, reviewed every year.",
+        stmtCopy: "Good financial decisions are rarely urgent. We start with where you stand, agree on a plan you fully understand, and review it together every year. The products come from established institutions; the advice stays independent of any single one of them.",
+        servicesEyebrow: "Services",
+        servicesTitle: "Six fields of advice.",
+        servicesLead: "Each field is delivered in personal sessions and, where products are needed, drawn from an established partner. What that means in practice:",
+        firmEyebrow: "The Firm",
+        firmTitle: "You always speak with the advisor who carries the responsibility. Never with an intermediary.",
+        firmCopy: "Capitalismous is an independent financial advisory firm based in Germany. Every client relationship is handled personally, from the first conversation to the yearly review. The firm works with established German and European institutions, and recommendations remain independent of any single product.",
+        firmFactOneK: "Advisory languages", firmFactOneV: "German, English",
+        firmFactTwoK: "Clients", firmFactTwoV: "Private & Business",
+        firmFactThreeK: "First session", firmFactThreeV: "Free of charge",
+        firmFactFourK: "Reviews", firmFactFourV: "Yearly, included",
+        partnersTitle: "Established partners.",
+        partnersCopy: "The partners provide the products. The advice remains independent and centered on your goals — no partner ever decides what is recommended to you.",
+        partnersNote: "Partnerships give access to products and conditions; they carry no sales obligation. Where a partner product is not the right answer, we say so.",
+        orbitCenterSub: "Independent advice",
+        navVoices: "Clients",
+        voicesEyebrow: "Client Voices",
+        voicesTitle: "What clients say.",
+        voicesLead: "A few words from the people the plans are built for.",
+        contactEyebrow: "Contact",
+        contactTitleOne: "Let's talk about",
+        contactTitleTwo: "your capital.",
+        contactCopy: "Bring your financial plan, a financing question or a retirement goal. You will leave the first session with a clear picture of where you stand.",
+        contactNote: "First session free, no obligation",
+        contactSupport: "24-hour support for clients",
+        footerRights: "© 2026 Capitalismous. All rights reserved."
+      },
+      de: {
+        navServices: "Leistungen", navAbout: "Firma", navPartners: "Partner", navContact: "Kontakt",
+        bookCta: "Gespräch buchen",
+        badge: "Unabhängige Finanzberatung",
+        heroLineOne: "Wir investieren in",
+        heroLineTwo: "das Wesentliche.",
+        heroLead: "Strategische Investments. Disziplinierter Ansatz. Bleibender Wert. Beratung für Privatkunden und Unternehmen, auf Deutsch und Englisch.",
+        heroCta: "Kostenloses Erstgespräch",
+        heroSecondary: "Leistungen ansehen",
+        heroSecondarySub: "Erstgespräch kostenlos, unverbindlich",
+        partnerStrip: "Zusammenarbeit mit etablierten Instituten",
+        stmtEyebrow: "Der Ansatz",
+        stmtTitle: "Ruhige Entscheidungen, einmal getroffen, jährlich überprüft.",
+        stmtCopy: "Gute Finanzentscheidungen sind selten dringend. Wir beginnen bei Ihrem Ist-Zustand, vereinbaren einen Plan, den Sie vollständig verstehen, und überprüfen ihn jedes Jahr gemeinsam. Die Produkte kommen von etablierten Instituten; die Beratung bleibt von jedem einzelnen unabhängig.",
+        servicesEyebrow: "Leistungen",
+        servicesTitle: "Sechs Beratungsfelder.",
+        servicesLead: "Jedes Feld wird in persönlichen Gesprächen betreut und, wo Produkte nötig sind, über einen etablierten Partner umgesetzt. Konkret heißt das:",
+        firmEyebrow: "Die Firma",
+        firmTitle: "Sie sprechen immer mit dem Berater, der die Verantwortung trägt. Nie mit einer Zwischenstelle.",
+        firmCopy: "Capitalismous ist eine unabhängige Finanzberatung mit Sitz in Deutschland. Jede Kundenbeziehung wird persönlich betreut, vom ersten Gespräch bis zum jährlichen Review. Die Firma arbeitet mit etablierten deutschen und europäischen Instituten, die Empfehlungen bleiben unabhängig von einzelnen Produkten.",
+        firmFactOneK: "Beratungssprachen", firmFactOneV: "Deutsch, Englisch",
+        firmFactTwoK: "Kunden", firmFactTwoV: "Privat & Unternehmen",
+        firmFactThreeK: "Erstgespräch", firmFactThreeV: "Kostenlos",
+        firmFactFourK: "Reviews", firmFactFourV: "Jährlich, inklusive",
+        partnersTitle: "Etablierte Partner.",
+        partnersCopy: "Die Partner liefern die Produkte. Die Beratung bleibt unabhängig und auf Ihre Ziele ausgerichtet — kein Partner entscheidet, was Ihnen empfohlen wird.",
+        partnersNote: "Partnerschaften eröffnen Zugang zu Produkten und Konditionen; sie enthalten keine Vertriebspflicht. Wo ein Partnerprodukt nicht die richtige Antwort ist, sagen wir das.",
+        orbitCenterSub: "Unabhängige Beratung",
+        navVoices: "Kunden",
+        voicesEyebrow: "Kundenstimmen",
+        voicesTitle: "Was Kunden sagen.",
+        voicesLead: "Ein paar Worte von den Menschen, für die die Pläne gemacht sind.",
+        contactEyebrow: "Kontakt",
+        contactTitleOne: "Sprechen wir über",
+        contactTitleTwo: "Ihr Kapital.",
+        contactCopy: "Bringen Sie Ihren Finanzplan, eine Finanzierungsfrage oder ein Vorsorgeziel mit. Nach dem ersten Gespräch wissen Sie klar, wo Sie stehen.",
+        contactNote: "Erstgespräch kostenlos, unverbindlich",
+        contactSupport: "24-Stunden-Support für Kunden",
+        footerRights: "© 2026 Capitalismous. Alle Rechte vorbehalten."
+      }
+    };
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.dict()[lang];
+    const setLang = (l) => { localStorage.setItem("capitalismous-language", l); this.setState({ lang: l }); };
+    const btnBase = { cursor: "pointer", border: 0, background: "transparent", color: "rgba(237,241,246,0.45)", font: "inherit", padding: "4px 6px" };
+    const btnActive = { ...btnBase, color: "#FFFFFF" };
+
+    const svcData = {
+      en: [
+        ["Wealth & Investment", "Long-term investment planning for capital growth within a clear risk framework.", "You define the goal and the risk you can carry; we build a fund-based plan around it and adjust it as life changes.", "Union Investment"],
+        ["Real Estate Financing", "Mortgages, property loans and guidance through every step of a financing.", "From the first budget check to the notary appointment: comparing offers, structuring the loan, and keeping the rate realistic.", "Deutsche Bank"],
+        ["Insurance & Protection", "Coverage for life, health, property and business, matched to real risk.", "We audit what you already have, close the gaps that would actually hurt, and cancel what you don't need.", "Generali"],
+        ["Pension & Retirement", "Private and company pension planning that stays realistic and reviewable.", "A clear number for the pension gap, then a plan across state, company and private layers to close it.", "Allianz"],
+        ["Business Finance", "Financing, credit lines, debt structuring and cash flow strategy for companies.", "For owners and self-employed clients: keeping liquidity stable, financing growth, and separating business from private risk.", "DVAG"],
+        ["Energy & Sustainability", "Energy purchasing support for lower costs and more sustainable operations.", "Reviewing contracts and consumption for households and businesses, and negotiating better terms.", "Independent"]
+      ],
+      de: [
+        ["Vermögen & Investment", "Langfristige Anlageplanung für Kapitalwachstum in klarem Risikorahmen.", "Sie definieren Ziel und tragbares Risiko; wir bauen einen fondsbasierten Plan darum und passen ihn an, wenn sich Ihr Leben ändert.", "Union Investment"],
+        ["Immobilienfinanzierung", "Baufinanzierungen, Immobilienkredite und Begleitung durch jeden Schritt.", "Vom ersten Budget-Check bis zum Notartermin: Angebote vergleichen, Darlehen strukturieren, Rate realistisch halten.", "Deutsche Bank"],
+        ["Versicherung & Schutz", "Absicherung für Leben, Gesundheit, Eigentum und Unternehmen.", "Wir prüfen den Bestand, schließen die Lücken, die wirklich wehtun würden, und kündigen, was Sie nicht brauchen.", "Generali"],
+        ["Altersvorsorge", "Private und betriebliche Vorsorgeplanung, realistisch und überprüfbar.", "Eine klare Zahl für die Rentenlücke, dann ein Plan über gesetzliche, betriebliche und private Schicht.", "Allianz"],
+        ["Unternehmensfinanzen", "Finanzierung, Kreditlinien, Schuldenstruktur und Cashflow-Strategie.", "Für Inhaber und Selbstständige: Liquidität stabil halten, Wachstum finanzieren, Geschäfts- und Privatrisiko trennen.", "DVAG"],
+        ["Energie & Nachhaltigkeit", "Unterstützung beim Energieeinkauf für Kosten und Nachhaltigkeit.", "Verträge und Verbrauch für Haushalte und Unternehmen prüfen und bessere Konditionen verhandeln.", "Unabhängig"]
+      ]
+    };
+    const services = svcData[lang].map(([title, body, detail, brand], i) => ({
+      num: "0" + (i + 1), title, body, detail,
+      brand: (lang === "de" ? "mit " : "with ") + brand
+    }));
+    services[5].brand = svcData[lang][5][3];
+
+    const partnersData = {
+      en: [
+        ["Union Investment", "Investment management and fund solutions"],
+        ["Deutsche Bank", "Real estate financing and corporate banking"],
+        ["Generali", "Insurance and risk protection products"],
+        ["Allianz", "Pension and retirement planning"],
+        ["DVAG", "Wealth management and business strategy"]
+      ],
+      de: [
+        ["Union Investment", "Investmentmanagement und Fondslösungen"],
+        ["Deutsche Bank", "Immobilienfinanzierung und Corporate Banking"],
+        ["Generali", "Versicherungs- und Risikoschutzprodukte"],
+        ["Allianz", "Altersvorsorge und Ruhestandsplanung"],
+        ["DVAG", "Vermögensplanung und Unternehmensstrategie"]
+      ]
+    };
+    const partners = partnersData[lang].map(([name, product]) => ({ name, product }));
+
+    const nodeColors = ["#4DA3D9", "#5C7CFA", "#E05252", "#5B9BD5", "#E8C24A"];
+    const sel = this.state.selectedPartner;
+    const ringFor = (i) => {
+      const col = nodeColors[i];
+      const base = {
+        display: "grid", placeItems: "center", width: "64px", height: "64px", borderRadius: "50%",
+        fontSize: "0.95rem", fontWeight: 600, letterSpacing: "0.04em", color: col,
+        background: "rgba(6,11,20,0.6)", border: "1px solid " + col + "55",
+        boxShadow: "inset 0 0 24px " + col + "22",
+        transition: "box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease"
+      };
+      return i === sel
+        ? { ...base, border: "1px solid " + col, boxShadow: "0 0 0 4px " + col + "33, inset 0 0 24px " + col + "33", transform: "scale(1.1)" }
+        : base;
+    };
+
+    const testimonialData = {
+      en: [
+        ["The first session gave me more clarity than years of scattered bank appointments. No pressure, just a plan I actually understand.", "M. K.", "Private client, Frankfurt"],
+        ["Our financing was structured and signed in six weeks. Every step was explained before we committed to anything.", "S. & T. B.", "Homeowners, Hessen"],
+        ["As a business owner I finally have one person who sees the whole picture — liquidity, protection and my own retirement.", "D. R.", "Business client, Berlin"]
+      ],
+      de: [
+        ["Das Erstgespräch hat mir mehr Klarheit gegeben als Jahre verstreuter Banktermine. Kein Druck, nur ein Plan, den ich wirklich verstehe.", "M. K.", "Privatkundin, Frankfurt"],
+        ["Unsere Finanzierung war in sechs Wochen strukturiert und unterschrieben. Jeder Schritt wurde erklärt, bevor wir uns festgelegt haben.", "S. & T. B.", "Eigentümer, Hessen"],
+        ["Als Unternehmer habe ich endlich eine Person, die das Gesamtbild sieht — Liquidität, Absicherung und meine eigene Vorsorge.", "D. R.", "Unternehmenskunde, Berlin"]
+      ]
+    };
+    const testimonials = testimonialData[lang].map(([quote, name, role]) => ({ quote, name, role, initial: name.charAt(0) }));
+
+    return {
+      t, services, partners, testimonials,
+      progressRef: this.progressRef,
+      heroParallaxRef: this.heroParallaxRef,
+      selName: partners[sel].name,
+      selProduct: partners[sel].product,
+      p0Ring: ringFor(0), p1Ring: ringFor(1), p2Ring: ringFor(2), p3Ring: ringFor(3), p4Ring: ringFor(4),
+      selP0: () => this.setState({ selectedPartner: 0 }),
+      selP1: () => this.setState({ selectedPartner: 1 }),
+      selP2: () => this.setState({ selectedPartner: 2 }),
+      selP3: () => this.setState({ selectedPartner: 3 }),
+      selP4: () => this.setState({ selectedPartner: 4 }),
+      setEn: () => setLang("en"),
+      setDe: () => setLang("de"),
+      enBtnStyle: lang === "en" ? btnActive : btnBase,
+      deBtnStyle: lang === "de" ? btnActive : btnBase
+    };
+  }
+}
+</script>
+</body>
+</html>
