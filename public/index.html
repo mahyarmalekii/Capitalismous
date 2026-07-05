@@ -8,7 +8,7 @@
 <body>
 <x-dc>
 <helmet>
-  <meta name="description" content="Capitalismous — independent financial firm. Investing, financing and cover with one point of contact." />
+  <meta name="description" content="Capitalismous. An independent financial firm for investing, financing and cover, all through one point of contact." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin="crossorigin" />
@@ -425,7 +425,7 @@ class Component extends DCLogic {
       v.addEventListener("playing", reveal, { once: true });
       v.addEventListener("loadeddata", () => { reveal(); kick(); }, { once: true });
       v.addEventListener("ended", () => { v.currentTime = 0; kick(); });
-      // Fallback in case autoplay is blocked — still show the first frame.
+      // Fallback in case autoplay is blocked, still show the first frame.
       setTimeout(reveal, 2600);
       v.src = "assets/hero-video.mp4";
       v.load();
@@ -453,15 +453,15 @@ class Component extends DCLogic {
         svcEyebrow: "What we do", svcTitle: "Four ways to put your money to work.",
         flowEyebrow: "How it works",
         flowTitle: "One person to call. Everything handled directly.",
-        flowLead: "Investing, credit, reporting and consulting — all direct, all from one advisor.",
+        flowLead: "Investing, credit, reporting and consulting. All direct, all from one person.",
         flowYou: "You", flowHub: "Your advisor", flowDirect: "Direct with us",
         flowInvest: "Investing", flowCredit: "Credit & financing", flowReport: "Monthly report", flowConsult: "Financial consulting",
         legendDirect: "Everything direct with Capitalismous",
         partEyebrow: "Network", partTitle: "The institutions behind the advice.",
-        partLead: "We stay independent. Products and financing come from established houses — we advise, you decide.",
-        partNote: "We work with established institutions for access to products and conditions; no sales obligation. Where a product isn't the right answer, we say so.",
-        partDisclaimer: "For insurance, we work directly with Quant — our largest partner — who arranges cover end-to-end, including Generali and Advocard products.",
-        voiEyebrow: "Voices", voiTitle: "The numbers clients feel.", voiHint: "Real outcomes, in a line each.",
+        partLead: "We stay independent. Products and financing come from established houses. We advise, you decide.",
+        partNote: "We partner with established institutions to get you better products and rates, with zero pressure to sell. When something isn't right for you, we tell you straight.",
+        partDisclaimer: "For insurance, we work directly with Quant, our biggest partner, who handles your cover from start to finish, including Generali and Advocard products.",
+        voiEyebrow: "Voices", voiTitle: "The numbers clients feel.", voiHint: "Real people. Real outcomes.",
         contactTitle1: "Let's talk about", contactTitle2: "your capital.",
         contactLead: "Bring an investment plan, a financing question or a cover you're unsure about. You'll leave the first call knowing exactly where you stand.",
         contactNote: "First call free · no obligation",
@@ -478,15 +478,15 @@ class Component extends DCLogic {
         svcEyebrow: "Was wir tun", svcTitle: "Vier Wege, Ihr Geld arbeiten zu lassen.",
         flowEyebrow: "Ablauf",
         flowTitle: "Ein Ansprechpartner. Alles direkt geregelt.",
-        flowLead: "Investment, Kredit, Reporting und Beratung — alles direkt, alles von einem Berater.",
+        flowLead: "Investment, Kredit, Reporting und Beratung. Alles direkt, alles von einer Person.",
         flowYou: "Sie", flowHub: "Ihr Berater", flowDirect: "Direkt bei uns",
         flowInvest: "Investment", flowCredit: "Kredit & Finanzierung", flowReport: "Monatsbericht", flowConsult: "Finanzberatung",
         legendDirect: "Alles direkt bei Capitalismous",
         partEyebrow: "Netzwerk", partTitle: "Die Institutionen hinter der Beratung.",
-        partLead: "Wir bleiben unabhängig. Produkte und Finanzierung kommen von etablierten Häusern — wir beraten, Sie entscheiden.",
-        partNote: "Wir arbeiten mit etablierten Institutionen für Zugang zu Produkten und Konditionen; keine Vertriebspflicht. Wo ein Produkt nicht passt, sagen wir das.",
-        partDisclaimer: "Für Versicherungen arbeiten wir direkt mit Quant — unserem größten Partner — der die Absicherung vollständig regelt, inklusive Produkte von Generali und Advocard.",
-        voiEyebrow: "Stimmen", voiTitle: "Zahlen, die Kunden spüren.", voiHint: "Echte Ergebnisse, je in einer Zeile.",
+        partLead: "Wir bleiben unabhängig. Produkte und Finanzierung kommen von etablierten Häusern. Wir beraten, Sie entscheiden.",
+        partNote: "Wir arbeiten mit etablierten Institutionen für bessere Produkte und Konditionen, ganz ohne Verkaufsdruck. Wo etwas nicht zu Ihnen passt, sagen wir es Ihnen klar.",
+        partDisclaimer: "Für Versicherungen arbeiten wir direkt mit Quant, unserem größten Partner, der Ihre Absicherung komplett regelt, inklusive Produkte von Generali und Advocard.",
+        voiEyebrow: "Stimmen", voiTitle: "Zahlen, die Kunden spüren.", voiHint: "Echte Menschen. Echte Ergebnisse.",
         contactTitle1: "Sprechen wir über", contactTitle2: "Ihr Kapital.",
         contactLead: "Bringen Sie einen Anlageplan, eine Finanzierungsfrage oder eine Absicherung mit, bei der Sie unsicher sind. Nach dem ersten Gespräch wissen Sie genau, wo Sie stehen.",
         contactNote: "Erstgespräch kostenlos · unverbindlich",
@@ -508,16 +508,16 @@ class Component extends DCLogic {
 
     const svcRaw = {
       en: [
-        ["Invest & grow", "Fund-based investing built around your risk — not a sales target.", "Direct", iInvest, "linear-gradient(150deg,#4FD99A,#24B978)", "rgba(36,185,120,0.28)", "#1E9E67", "rgba(36,185,120,0.1)"],
-        ["Credit & financing", "Loans and financing compared and structured, start to signature.", "Direct", iCredit, "linear-gradient(150deg,#FFD36B,#F5A623)", "rgba(245,166,35,0.28)", "#C77E10", "rgba(245,166,35,0.12)"],
-        ["Monthly report", "Your whole financial picture in one clear report, every month.", "Direct", iReport, "linear-gradient(150deg,#4EC3F0,#2E93E6)", "rgba(46,147,230,0.28)", "#1E77C4", "rgba(46,147,230,0.1)"],
-        ["Financial consulting", "Straight talk on how to put your money to work — and keep it working.", "Direct", iConsult, "linear-gradient(150deg,#7FB4E8,#2E70C8)", "rgba(46,112,200,0.28)", "#1E5FA8", "rgba(46,112,200,0.1)"]
+        ["Invest & grow", "Real funds matched to your risk, never to a sales target.", "Direct", iInvest, "linear-gradient(150deg,#4FD99A,#24B978)", "rgba(36,185,120,0.28)", "#1E9E67", "rgba(36,185,120,0.1)"],
+        ["Credit & financing", "We compare the loans, structure the deal and stay with you through signature.", "Direct", iCredit, "linear-gradient(150deg,#FFD36B,#F5A623)", "rgba(245,166,35,0.28)", "#C77E10", "rgba(245,166,35,0.12)"],
+        ["Monthly report", "Your whole financial picture in one clean report, every month.", "Direct", iReport, "linear-gradient(150deg,#4EC3F0,#2E93E6)", "rgba(46,147,230,0.28)", "#1E77C4", "rgba(46,147,230,0.1)"],
+        ["Financial consulting", "Straight answers on how to grow your money and keep it growing.", "Direct", iConsult, "linear-gradient(150deg,#7FB4E8,#2E70C8)", "rgba(46,112,200,0.28)", "#1E5FA8", "rgba(46,112,200,0.1)"]
       ],
       de: [
-        ["Investieren", "Fondsbasiertes Investment nach Ihrem Risiko — nicht nach Verkaufsziel.", "Direkt", iInvest, "linear-gradient(150deg,#4FD99A,#24B978)", "rgba(36,185,120,0.28)", "#1E9E67", "rgba(36,185,120,0.1)"],
-        ["Kredit & Finanzierung", "Kredite und Finanzierungen verglichen und strukturiert, bis zur Unterschrift.", "Direkt", iCredit, "linear-gradient(150deg,#FFD36B,#F5A623)", "rgba(245,166,35,0.28)", "#C77E10", "rgba(245,166,35,0.12)"],
+        ["Investieren", "Echte Fonds nach Ihrem Risiko, nie nach Verkaufsziel.", "Direkt", iInvest, "linear-gradient(150deg,#4FD99A,#24B978)", "rgba(36,185,120,0.28)", "#1E9E67", "rgba(36,185,120,0.1)"],
+        ["Kredit & Finanzierung", "Wir vergleichen die Kredite, strukturieren die Finanzierung und bleiben bis zur Unterschrift dabei.", "Direkt", iCredit, "linear-gradient(150deg,#FFD36B,#F5A623)", "rgba(245,166,35,0.28)", "#C77E10", "rgba(245,166,35,0.12)"],
         ["Monatsbericht", "Ihr gesamtes Finanzbild in einem klaren Bericht, jeden Monat.", "Direkt", iReport, "linear-gradient(150deg,#4EC3F0,#2E93E6)", "rgba(46,147,230,0.28)", "#1E77C4", "rgba(46,147,230,0.1)"],
-        ["Finanzberatung", "Klarer Rat, wie Sie Ihr Geld arbeiten lassen — und es dabei halten.", "Direkt", iConsult, "linear-gradient(150deg,#7FB4E8,#2E70C8)", "rgba(46,112,200,0.28)", "#1E5FA8", "rgba(46,112,200,0.1)"]
+        ["Finanzberatung", "Klare Antworten, wie Sie Ihr Geld wachsen lassen und es wachsen halten.", "Direkt", iConsult, "linear-gradient(150deg,#7FB4E8,#2E70C8)", "rgba(46,112,200,0.28)", "#1E5FA8", "rgba(46,112,200,0.1)"]
       ]
     };
     const spheres = [
@@ -533,30 +533,30 @@ class Component extends DCLogic {
       en: [
         ["Deutsche Bank", "Financing & corporate banking", "DB", "Bank"],
         ["DVAG", "Wealth planning & products", "DV", "Advisory"],
-        ["Quant", "Insurance — our direct partner", "Q", "Insurance"],
-        ["Generali", "Insurance — via Quant", "GE", "Insurance"],
-        ["Advocard", "Legal protection — via Quant", "AD", "Insurance"]
+        ["Quant", "Insurance, our direct partner", "Q", "Insurance"],
+        ["Generali", "Insurance, via Quant", "GE", "Insurance"],
+        ["Advocard", "Legal protection, via Quant", "AD", "Insurance"]
       ],
       de: [
         ["Deutsche Bank", "Finanzierung & Corporate Banking", "DB", "Bank"],
         ["DVAG", "Vermögensplanung & Produkte", "DV", "Beratung"],
-        ["Quant", "Versicherung — unser direkter Partner", "Q", "Versicherung"],
-        ["Generali", "Versicherung — über Quant", "GE", "Versicherung"],
-        ["Advocard", "Rechtsschutz — über Quant", "AD", "Versicherung"]
+        ["Quant", "Versicherung, unser direkter Partner", "Q", "Versicherung"],
+        ["Generali", "Versicherung, über Quant", "GE", "Versicherung"],
+        ["Advocard", "Rechtsschutz, über Quant", "AD", "Versicherung"]
       ]
     };
     const networkPartners = npRaw[lang].map(([name, role, mono, kind], i) => ({ name, role, mono, kind, num: i + 1 }));
 
     const tmRaw = {
       en: [
-        ["Clearer in one call than in years of bank meetings.", "Lena B.", "Private client", "linear-gradient(150deg,#7FB4E8,#2E70C8)", "1", "Point of contact", "#3C86D6", 30],
-        ["Investing and financing from one person — and a report I actually read.", "Marco R.", "Business owner", "linear-gradient(150deg,#4FD99A,#24B978)", "0", "Call-centers", "#24B978", 12],
-        ["Their consulting changed how I actually use my money day to day.", "Sophie K.", "Private client", "linear-gradient(150deg,#F19BBC,#E87AA6)", "100%", "Independent", "#E87AA6", 6]
+        ["Honestly? One call and it all clicked. Years of bank meetings never got me there.", "Lena B.", "Private client", "linear-gradient(150deg,#7FB4E8,#2E70C8)", "1", "Point of contact", "#3C86D6", 30],
+        ["Investing and financing handled by one guy, plus a report I actually open. Can't ask for more.", "Marco R.", "Business owner", "linear-gradient(150deg,#4FD99A,#24B978)", "0", "Call centers", "#24B978", 12],
+        ["Their advice quietly changed how I use my money week to week. I feel in control now.", "Sophie K.", "Private client", "linear-gradient(150deg,#F19BBC,#E87AA6)", "100%", "Independent", "#E87AA6", 6]
       ],
       de: [
-        ["Nach einem Gespräch klarer als nach Jahren voller Banktermine.", "Lena B.", "Privatkundin", "linear-gradient(150deg,#7FB4E8,#2E70C8)", "1", "Ansprechpartner", "#3C86D6", 30],
-        ["Investment und Finanzierung von einer Person — und ein Bericht, den ich lese.", "Marco R.", "Unternehmer", "linear-gradient(150deg,#4FD99A,#24B978)", "0", "Call-Center", "#24B978", 12],
-        ["Ihre Beratung hat verändert, wie ich mein Geld täglich nutze.", "Sophie K.", "Privatkundin", "linear-gradient(150deg,#F19BBC,#E87AA6)", "100%", "Unabhängig", "#E87AA6", 6]
+        ["Ehrlich? Ein Gespräch und alles war klar. Jahre voller Banktermine haben das nie geschafft.", "Lena B.", "Privatkundin", "linear-gradient(150deg,#7FB4E8,#2E70C8)", "1", "Ansprechpartner", "#3C86D6", 30],
+        ["Investment und Finanzierung von einer Person, dazu ein Bericht, den ich wirklich lese. Mehr geht nicht.", "Marco R.", "Unternehmer", "linear-gradient(150deg,#4FD99A,#24B978)", "0", "Call Center", "#24B978", 12],
+        ["Ihre Beratung hat leise verändert, wie ich mein Geld täglich nutze. Ich fühle mich jetzt sicher.", "Sophie K.", "Privatkundin", "linear-gradient(150deg,#F19BBC,#E87AA6)", "100%", "Unabhängig", "#E87AA6", 6]
       ]
     };
     const tmSpheres = [
